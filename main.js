@@ -36,8 +36,8 @@ Vue.component('product', {
                 >
                     Add to Cart
                 </button>
-
             </div>
+            <productReview></productReview>
         </div>`,
     data() {
         return {
@@ -88,6 +88,36 @@ Vue.component('product', {
     }
 })
 
+const productReview = Vue.component('productReview', {
+    template: `
+        <form class="review-form">
+            <p>
+                <label for="name">Name:</label>
+                <input id="name" v-model="name" />
+            </p>
+            <p>
+                {{name}}
+            </p>
+            <p>
+                <label for="review">Review:</label>
+                <textarea id="review" v-model="review></textarea>
+            </p>
+            <p>
+                <label for="rating">Rating:</label>
+                <select id="rating" v-model.number="rating">
+                    <option>5</option>
+                    <option>4</option>
+                    <option>3</option>
+                    <option>2</option>
+                    <option>1</option>
+                </select>
+            </p>
+    `,
+    data() {
+        return {name: null, review: null, rating: null}
+    }
+})
+
 var app = new Vue({
     el: '#app',
     data: {
@@ -98,5 +128,8 @@ var app = new Vue({
         updateCart(id) {
             this.cart.push(id);
         }
-    }
+    },
+    components : {
+        productReview
+    },
 });
