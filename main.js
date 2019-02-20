@@ -129,7 +129,7 @@ var app = new Vue({
             this.cart.push(id);
         }
     },
-    components : {
+    components: {
         productReview
     },
 });
